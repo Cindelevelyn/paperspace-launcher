@@ -1,43 +1,185 @@
-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="PaperSpaces · seu computador, do seu jeito" Width="1200" Height="830" MinWidth="900" MinHeight="650" WindowStartupLocation="CenterScreen" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display">
- <Grid Margin="24,18,24,18">
-  <Grid.RowDefinitions><RowDefinition Height="66"/><RowDefinition Height="*"/><RowDefinition Height="30"/></Grid.RowDefinitions>
-  <Grid Grid.Row="0">
-   <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-    <Border Background="{DynamicResource Accent}" CornerRadius="12" Width="42" Height="42" Margin="0,0,12,0"><TextBlock Text="p." FontFamily="Georgia" FontSize="31" Foreground="{DynamicResource OnAccent}" HorizontalAlignment="Center" Margin="0,-2,0,0"/></Border>
-    <StackPanel><TextBlock Text="PaperSpaces" FontSize="22" FontWeight="SemiBold"/><TextBlock Text="UM CANTINHO PARA CADA VERSÃO DE VOCÊ" FontSize="9" Foreground="{DynamicResource Muted}" Margin="1,2,0,0"/></StackPanel>
-   </StackPanel>
-   <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-    <TextBlock x:Name="DateLabel" FontSize="12" Foreground="{DynamicResource Muted}" VerticalAlignment="Center" Margin="0,0,20,0"/>
-    <Button x:Name="ThemeButton" Content="☾  Tema escuro" ToolTip="Alternar tema do launcher"/>
-   </StackPanel>
-  </Grid>
-  <Grid Grid.Row="1">
-   <Grid.ColumnDefinitions><ColumnDefinition Width="164"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-   <DockPanel Grid.Column="0" Margin="0,22,0,20">
-    <StackPanel DockPanel.Dock="Bottom" Margin="0,24,12,0">
-      <Button x:Name="LibraryButton" Content="▦   Biblioteca" Style="{DynamicResource Quiet}" HorizontalContentAlignment="Left" Margin="0,0,0,5"/>
-      <Button x:Name="SettingsButton" Content="⚙   Preferências" Style="{DynamicResource Quiet}" HorizontalContentAlignment="Left"/>
-      <TextBlock Text="feito para o seu ritmo." FontFamily="Georgia" FontStyle="Italic" FontSize="12" Foreground="{DynamicResource Muted}" Margin="10,25,0,0"/>
-    </StackPanel>
-    <ScrollViewer><StackPanel>
-      <TextBlock Text="SUAS PÁGINAS" FontSize="10" Foreground="{DynamicResource Muted}" Margin="10,0,0,16"/>
-      <StackPanel x:Name="Tabs"/>
-      <Button x:Name="NewSpaceButton" Content="+  Novo ambiente" Style="{DynamicResource Quiet}" HorizontalContentAlignment="Left" Margin="0,16,10,0"/>
-    </StackPanel></ScrollViewer>
-   </DockPanel>
-   <Border Grid.Column="1" Background="{DynamicResource Paper}" BorderBrush="{DynamicResource Line}" BorderThickness="1" CornerRadius="3,14,14,3">
-    <Grid>
-     <Grid.ColumnDefinitions><ColumnDefinition Width="28"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
-     <Border Grid.Column="0" BorderBrush="{DynamicResource Line}" BorderThickness="0,0,1,0" Margin="0,18,0,18">
-      <StackPanel x:Name="BindingHoles" VerticalAlignment="Center"/>
-     </Border>
-     <ScrollViewer Grid.Column="1" x:Name="PageScroll" Padding="30,28,30,28"><StackPanel x:Name="Page"/></ScrollViewer>
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="PaperSpaces · seu computador, do seu jeito"
+    Width="1200"
+    Height="830"
+    MinWidth="940"
+    MinHeight="660"
+    WindowStartupLocation="CenterScreen"
+    UseLayoutRounding="True"
+    TextOptions.TextFormattingMode="Display">
+  <Grid Margin="22,12,22,10">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="58"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="28"/>
+    </Grid.RowDefinitions>
+
+    <!-- Cabeçalho -->
+    <Grid Grid.Row="0">
+      <StackPanel Orientation="Horizontal"
+          VerticalAlignment="Center">
+        <Border Background="{DynamicResource Cover}"
+            CornerRadius="10"
+            Width="38"
+            Height="38"
+            Margin="0,0,12,0">
+          <TextBlock Text="p."
+              FontFamily="Georgia"
+              FontSize="27"
+              Foreground="{DynamicResource OnCover}"
+              HorizontalAlignment="Center"
+              Margin="0,-1,0,0"/>
+        </Border>
+        <StackPanel VerticalAlignment="Center">
+          <TextBlock Text="PaperSpaces"
+              FontFamily="Georgia"
+              FontSize="20"/>
+          <TextBlock Text="um fichário para cada versão de você"
+              FontFamily="Georgia"
+              FontStyle="Italic"
+              FontSize="11"
+              Foreground="{DynamicResource Muted}"
+              Margin="1,1,0,0"/>
+        </StackPanel>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal"
+          HorizontalAlignment="Right"
+          VerticalAlignment="Center">
+        <TextBlock x:Name="DateLabel"
+            FontSize="12"
+            Foreground="{DynamicResource Muted}"
+            VerticalAlignment="Center"
+            Margin="0,0,16,0"/>
+        <Button x:Name="ThemeButton"
+            Style="{DynamicResource Quiet}"
+            Content="☾  Tema escuro"
+            ToolTip="Alternar tema do launcher"/>
+      </StackPanel>
     </Grid>
-   </Border>
+
+    <!-- Fichário -->
+    <Grid Grid.Row="1">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="172"/>
+      </Grid.ColumnDefinitions>
+
+      <!-- Capa -->
+      <Border Grid.ColumnSpan="2"
+          Background="{DynamicResource Cover}"
+          CornerRadius="18">
+        <Border.Effect>
+          <DropShadowEffect BlurRadius="22"
+              ShadowDepth="4"
+              Direction="270"
+              Opacity="0.22"/>
+        </Border.Effect>
+      </Border>
+      <!-- Lombada -->
+      <Border Grid.Column="0"
+          HorizontalAlignment="Left"
+          Width="40"
+          Background="{DynamicResource CoverDark}"
+          CornerRadius="18,0,0,18">
+        <Rectangle HorizontalAlignment="Right"
+            Width="1"
+            Margin="0,14,7,14"
+            Stroke="{DynamicResource OnCover}"
+            StrokeThickness="1"
+            StrokeDashArray="3 3"
+            Opacity="0.35"/>
+      </Border>
+
+      <!-- Folhas empilhadas atrás da página -->
+      <Border Grid.Column="0"
+          Margin="52,26,-8,6"
+          Background="{DynamicResource PaperEdge}"
+          CornerRadius="4,10,10,4"/>
+      <Border Grid.Column="0"
+          Margin="50,21,-4,11"
+          Background="{DynamicResource PaperEdge}"
+          BorderBrush="{DynamicResource Line}"
+          BorderThickness="0,0,1,1"
+          CornerRadius="4,10,10,4"/>
+
+      <!-- Sombra da página (separada para não borrar o texto) -->
+      <Border Grid.Column="0"
+          Margin="48,16,0,16"
+          Background="{DynamicResource Paper}"
+          CornerRadius="4,10,10,4">
+        <Border.Effect>
+          <DropShadowEffect BlurRadius="10"
+              ShadowDepth="1"
+              Direction="315"
+              Opacity="0.18"/>
+        </Border.Effect>
+      </Border>
+
+      <!-- Página -->
+      <Border x:Name="Sheet"
+          Grid.Column="0"
+          Margin="48,16,0,16"
+          Background="{DynamicResource Paper}"
+          BorderBrush="{DynamicResource Line}"
+          BorderThickness="0,0,6,0"
+          CornerRadius="4,10,10,4">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="76"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+          <!-- Linha de margem do caderno -->
+          <Border Grid.Column="0"
+              HorizontalAlignment="Right"
+              Width="1.5"
+              Margin="0,0,14,0"
+              Background="{DynamicResource MarginLine}"/>
+          <ScrollViewer Grid.Column="1"
+              x:Name="PageScroll"
+              Padding="0,30,40,30"
+              Focusable="False">
+            <StackPanel x:Name="Page"/>
+          </ScrollViewer>
+        </Grid>
+      </Border>
+
+      <!-- Argolas: atravessam os furos da página -->
+      <UniformGrid x:Name="Rings"
+          Grid.Column="0"
+          Columns="1"
+          HorizontalAlignment="Left"
+          Width="80"
+          Margin="10,40,0,40"
+          IsHitTestVisible="False"/>
+
+      <!-- Divisores laterais -->
+      <DockPanel Grid.Column="1"
+          Margin="-16,30,0,22">
+        <StackPanel x:Name="UtilityTabs"
+            DockPanel.Dock="Bottom"
+            Margin="0,14,0,0"/>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden"
+            Focusable="False">
+          <StackPanel x:Name="Tabs"/>
+        </ScrollViewer>
+      </DockPanel>
+    </Grid>
+
+    <!-- Rodapé -->
+    <Grid Grid.Row="2"
+        Margin="52,8,0,0">
+      <TextBlock x:Name="StatusLabel"
+          Text="●  Tudo salvo neste computador"
+          FontSize="11"
+          Foreground="{DynamicResource Muted}"
+          TextTrimming="CharacterEllipsis"
+          TextWrapping="NoWrap"
+          Margin="0,0,260,0"/>
+      <TextBlock Text="Ctrl+1…9 troca de aba  ·  Ctrl+N novo ambiente  ·  MVP 0.1.0"
+          HorizontalAlignment="Right"
+          FontSize="10"
+          Foreground="{DynamicResource Muted}"/>
+    </Grid>
   </Grid>
-  <Grid Grid.Row="2" Margin="174,9,0,0">
-   <TextBlock x:Name="StatusLabel" Text="●  Tudo salvo neste computador" FontSize="11" Foreground="{DynamicResource Muted}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" Margin="0,0,95,0"/>
-   <TextBlock Text="MVP  /  0.1.0" HorizontalAlignment="Right" FontSize="10" Foreground="{DynamicResource Muted}"/>
-  </Grid>
- </Grid>
 </Window>
