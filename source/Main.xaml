@@ -1,0 +1,43 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="PaperSpaces · seu computador, do seu jeito" Width="1200" Height="830" MinWidth="900" MinHeight="650" WindowStartupLocation="CenterScreen" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display">
+ <Grid Margin="24,18,24,18">
+  <Grid.RowDefinitions><RowDefinition Height="66"/><RowDefinition Height="*"/><RowDefinition Height="30"/></Grid.RowDefinitions>
+  <Grid Grid.Row="0">
+   <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+    <Border Background="{DynamicResource Accent}" CornerRadius="12" Width="42" Height="42" Margin="0,0,12,0"><TextBlock Text="p." FontFamily="Georgia" FontSize="31" Foreground="{DynamicResource OnAccent}" HorizontalAlignment="Center" Margin="0,-2,0,0"/></Border>
+    <StackPanel><TextBlock Text="PaperSpaces" FontSize="22" FontWeight="SemiBold"/><TextBlock Text="UM CANTINHO PARA CADA VERSÃO DE VOCÊ" FontSize="9" Foreground="{DynamicResource Muted}" Margin="1,2,0,0"/></StackPanel>
+   </StackPanel>
+   <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+    <TextBlock x:Name="DateLabel" FontSize="12" Foreground="{DynamicResource Muted}" VerticalAlignment="Center" Margin="0,0,20,0"/>
+    <Button x:Name="ThemeButton" Content="☾  Tema escuro" ToolTip="Alternar tema do launcher"/>
+   </StackPanel>
+  </Grid>
+  <Grid Grid.Row="1">
+   <Grid.ColumnDefinitions><ColumnDefinition Width="164"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+   <DockPanel Grid.Column="0" Margin="0,22,0,20">
+    <StackPanel DockPanel.Dock="Bottom" Margin="0,24,12,0">
+      <Button x:Name="LibraryButton" Content="▦   Biblioteca" Style="{DynamicResource Quiet}" HorizontalContentAlignment="Left" Margin="0,0,0,5"/>
+      <Button x:Name="SettingsButton" Content="⚙   Preferências" Style="{DynamicResource Quiet}" HorizontalContentAlignment="Left"/>
+      <TextBlock Text="feito para o seu ritmo." FontFamily="Georgia" FontStyle="Italic" FontSize="12" Foreground="{DynamicResource Muted}" Margin="10,25,0,0"/>
+    </StackPanel>
+    <ScrollViewer><StackPanel>
+      <TextBlock Text="SUAS PÁGINAS" FontSize="10" Foreground="{DynamicResource Muted}" Margin="10,0,0,16"/>
+      <StackPanel x:Name="Tabs"/>
+      <Button x:Name="NewSpaceButton" Content="+  Novo ambiente" Style="{DynamicResource Quiet}" HorizontalContentAlignment="Left" Margin="0,16,10,0"/>
+    </StackPanel></ScrollViewer>
+   </DockPanel>
+   <Border Grid.Column="1" Background="{DynamicResource Paper}" BorderBrush="{DynamicResource Line}" BorderThickness="1" CornerRadius="3,14,14,3">
+    <Grid>
+     <Grid.ColumnDefinitions><ColumnDefinition Width="28"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+     <Border Grid.Column="0" BorderBrush="{DynamicResource Line}" BorderThickness="0,0,1,0" Margin="0,18,0,18">
+      <StackPanel x:Name="BindingHoles" VerticalAlignment="Center"/>
+     </Border>
+     <ScrollViewer Grid.Column="1" x:Name="PageScroll" Padding="30,28,30,28"><StackPanel x:Name="Page"/></ScrollViewer>
+    </Grid>
+   </Border>
+  </Grid>
+  <Grid Grid.Row="2" Margin="174,9,0,0">
+   <TextBlock x:Name="StatusLabel" Text="●  Tudo salvo neste computador" FontSize="11" Foreground="{DynamicResource Muted}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" Margin="0,0,95,0"/>
+   <TextBlock Text="MVP  /  0.1.0" HorizontalAlignment="Right" FontSize="10" Foreground="{DynamicResource Muted}"/>
+  </Grid>
+ </Grid>
+</Window>

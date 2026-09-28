@@ -1,0 +1,11 @@
+PASS Defaults and JSON persistence
+PASS Reject unsupported configuration without overwrite
+PASS Corrupt configuration recovers backup and preserves original
+PASS Broken file without backup is preserved
+PASS Reject dangerous or malformed URL schemes
+PASS Reject missing executable and non-executable file
+PASS Reject orphan app references and repeated ids
+PASS Windows argument quoting roundtrip
+PASS Executable launch uses no command shell
+INFO Child-process test is opt-in: --self-test-process (requires LaunchProbe.exe).
+ALL SELECTED TESTS PASSED
